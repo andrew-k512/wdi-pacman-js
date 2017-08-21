@@ -81,6 +81,24 @@ function eatDot() {
   score += 10;
 }
 
+function eatPowerPellet() {
+  if (powerPellets > 0) {
+    score += 50;
+    for (var i = 0; i < ghosts.length; i++) {
+      ghosts[i]['edible'] = true
+    };
+    powerPellets -= 1;
+  } else {
+    console.log("\nYou are out of Power Pellets!")
+  }
+}
+
+// Create an eatPowerPellet function that's executed when the p key is entered. It should:
+//
+//     increase Pac-Man's score by 50 points
+//     change all the ghost's edible property to true
+//     reduce the number of Power-Pellets remaining
+
 function eatGhost(ghost) {
   if (ghost['edible'] === false) {
     console.log("\nPac-man eats " + ghost['name'] + " and dies a " + ghost['colour'] + " death!");
@@ -111,9 +129,9 @@ function processInput(key) {
     case 'd':
       eatDot();
       break;
-    // case 'p'
-    //   eatPowerPellet();
-    //   break;
+    case 'p':
+      eatPowerPellet();
+      break;
     case '1':
       eatGhost(inky);
       break;
