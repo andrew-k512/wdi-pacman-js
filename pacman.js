@@ -65,6 +65,7 @@ function displayMenu() {
   for (var i = 0; i < ghosts.length; i++) {
     console.log("(" + ghosts[i]['menu_option'] + ") Eat " + ghosts[i]['name']);
   };
+  console.log('(p) Eat Power-Pellet');
   console.log('(q) Quit');
 }
 
@@ -110,6 +111,9 @@ function processInput(key) {
     case 'd':
       eatDot();
       break;
+    // case 'p'
+    //   eatPowerPellet();
+    //   break;
     case '1':
       eatGhost(inky);
       break;
@@ -122,6 +126,7 @@ function processInput(key) {
     case '4':
       eatGhost(clyde);
       break;
+
     default:
       console.log('\nInvalid Command!');
   }
