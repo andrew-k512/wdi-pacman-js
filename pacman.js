@@ -64,8 +64,10 @@ function displayMenu() {
   console.log('(d) Eat Dot');
   for (var i = 0; i < ghosts.length; i++) {
     console.log("(" + ghosts[i]['menu_option'] + ") Eat " + ghosts[i]['name']);
-  };
+  }
+  if (powerPellets > 0) {
   console.log('(p) Eat Power-Pellet');
+  }
   console.log('(q) Quit');
 }
 
