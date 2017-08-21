@@ -60,6 +60,9 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  for (var i = 0; i < ghosts.length; i++) {
+    console.log("(" + ghosts[i]['menu_option'] + ") Eat " + ghosts[i]['name']);
+  };
   console.log('(q) Quit');
 }
 
@@ -75,6 +78,26 @@ function eatDot() {
   score += 10;
 }
 
+function eatGhost(ghost) {
+  if (ghost['edible'] === false) {
+    console.log("\nPac-man eats " + ghost['name'] + " and dies a " + ghost['colour'] + " death!");
+    loseLife();
+  } else if (ghost['edible'] === true) {
+    score += 200;
+    console.log("\nPac-man eats " + ghost['name'] + " and starts feeling " + ghost['character'] + "!");
+    ghost['edible'] = false;
+  }
+}
+
+function loseLife() {
+  if (lives > 0) {
+    lives -= 1;
+  } else if (lives === 0) {
+    console.log("\nGame Over");
+    process.exit();
+  };
+}
+
 
 // Process Player's Input
 function processInput(key) {
@@ -85,6 +108,18 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case '1':
+      eatGhost(inky);
+      break;
+    case '2':
+      eatGhost(blinky);
+      break;
+    case '3':
+      eatGhost(pinky);
+      break;
+    case '4':
+      eatGhost(clyde);
       break;
     default:
       console.log('\nInvalid Command!');
